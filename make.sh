@@ -30,11 +30,11 @@ do
 done
 
 foo https://atlas.ripe.net/api/internal/measurement-last/1595158/ RU1.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595133/ RU2.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595137/ RU3.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595138/ RU4.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595134/ RU5.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595139/ RU6.js
-foo https://atlas.ripe.net/api/internal/measurement-last/1595140/ RU7.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595163/ RU2.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595164/ RU3.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595165/ RU4.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595166/ RU5.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595167/ RU6.js
+foo https://atlas.ripe.net/api/internal/measurement-last/1595169/ RU7.js
 
 echo "Done"
