@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map_canvas {
+        width: 100%;
+        height: 700px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+function initialize() {
+  var mapOptions = {
+    zoom: 10,
+    center: new google.maps.LatLng(-33.9, 151.2)
+  }
+  var map = new google.maps.Map(document.getElementById('map_canvas'),
+                                mapOptions);
+
+  setMarkers(map, markers);
+
+var markers = [
+[1, 55.7785, 37.7195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=119&text=1']
+[2, 55.7605, 37.6195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
+[2, 55.7495, 37.6205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
+[2, 55.7705, 37.8715, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
+[2, 55.7505, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
+[2, 55.9205, 37.7175, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
+[3, 55.7415, 37.6475, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=117&text=3']
+[4, 55.7495, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=116&text=4']
+[4, 55.7605, 37.7015, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=116&text=4']
+[5, 55.7405, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=115&text=5']
+[5, 55.8815, 37.4205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=115&text=5']
+[6, 56.1285, 38.1385, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=114&text=6']
+[7, 55.7415, 37.6705, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
+[7, 55.9995, 37.4315, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
+[7, 55.7105, 38.9515, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
+[7, 56.1395, 40.4115, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
+[8, 54.1805, 37.6315, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=112&text=8']
+[9, 55.8505, 37.4815, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=111&text=9']
+[9, 59.9085, 30.3115, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=111&text=9']
+[10, 59.9285, 30.2995, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
+[10, 59.9605, 30.4095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
+[10, 59.9285, 30.4175, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
+[12, 52.5995, 39.5915, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=108&text=12']
+[12, 60.0605, 30.3085, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=108&text=12']
+[13, 59.7415, 30.5575, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
+[13, 59.8485, 30.3395, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
+[13, 57.7915, 38.4485, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
+[14, 59.9485, 30.4705, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
+[14, 59.9595, 30.4875, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
+[14, 59.9395, 30.3105, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
+[15, 60.0505, 30.4495, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=105&text=15']
+[15, 59.9415, 30.3075, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=105&text=15']
+[19, 56.3385, 30.5005, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=101&text=19']
+[20, 53.2315, 50.1815, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=100&text=20']
+[28, 54.7405, 55.9585, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=92&text=28']
+[28, 48.7095, 44.5195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=92&text=28']
+[34, 54.7315, 20.5095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=86&text=34']
+[34, 53.2205, 50.2095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=86&text=34']
+[36, 56.8495, 60.6205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=84&text=36']
+[42, 54.9685, 73.3905, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=78&text=42']
+[48, 57.1815, 65.5595, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=72&text=48']
+[63, 53.2215, 50.2615, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=57&text=63']
+[64, 55.0905, 82.9395, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=56&text=64']
+[65, 52.2285, 104.2975, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=55&text=65']
+[66, 56.5005, 84.9515, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=54&text=66']
+[77, 54.4115, 86.2985, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=43&text=77']
+[133, 46.9375, 142.7285, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=0&text=133']
+];
+function setMarkers(map, locations) {
+  var image = {
+    size: new google.maps.Size(20, 32),
+    origin: new google.maps.Point(0,0),
+    anchor: new google.maps.Point(0, 32)
+  };
+  var shape = {
+      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      type: 'poly'
+  };
+  for (var i = 0; i < markers.length; i++) {
+    var myLatLng = new google.maps.LatLng(markers[1], markers[2]);
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        icon: markers[3],
+        shape: shape,
+        title: beach[0],
+    });
+    marker.setMap(map);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map_canvas"></div>
+  </body>
+</html>

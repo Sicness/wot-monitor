@@ -1,0 +1,29 @@
+setMarkers(map, markers);
+ 
+function setMarkers(map, locations) {
+ 
+  var shape = {
+      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      type: 'poly'
+  };
+  //for (var i = 0; i < markers.length; i++) {
+  markers.forEach(function(marker) {
+    var myLatLng = new google.maps.LatLng(marker[1], marker[2]);
+    var image = {
+      url: marker[3],
+      size: new google.maps.Size(20, 32),
+      origin: new google.maps.Point(0,0),
+      anchor: new google.maps.Point(0, 32)
+  }
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        icon: image,
+        shape: shape,
+    });
+    marker.setMap(map);
+  });
+}
+}
+ 
+google.maps.event.addDomListener(window, 'load', initialize);
