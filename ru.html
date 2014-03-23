@@ -1,20 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="World of Tanks Servers Monitor">
+    <meta name="author" content="Anton Balashov">
     <style>
       #map_canvas {
         width: 100%;
         height: 700px;
       }
     </style>
+    <title>%SERVER% WoT-Monitor</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="/js/%SERVER%.js"> </script>
     <script src="/js/google_analytics.js"> </script>
   </head>
+
   <body>
-    <p><h1>World Of Tanks: Server %SERVER%</h1></p>
-    <div id="map_canvas"></div>
-    <p><i>Author: sicness_at_darklogic.ru</i></p>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+            <a class="navbar-brand" href="#">WoT-Monitor</a>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/RU1.html">RU1</a></li>
+              <li><a href="/RU2.html">RU2</a></li>
+              <li><a href="/RU3.html">RU3</a></li>
+              <li><a href="/RU4.html">RU4</a></li>
+              <li><a href="/RU5.html">RU5</a></li>
+              <li><a href="/RU6.html">RU6</a></li>
+              <li><a href="/RU7.html">RU7</a></li>
+              <li><a target="_black" href="https://github.com/Sicness/wot-monitor">Github</a></li>
+            </ul>
+      </div>
+    </nav>
+
+    <div class="container"><br><br>
+      <div class="page-header"> <h1>World Of Tanks: Server %SERVER%</h1> </div>
+      <div id="map_canvas"></div>
+        <hr>
+        <p><i>Author: Anton Balashov <sicness@darklogic.ru><br>
+          Licensed under GNU GPLv3</i></p>
+    </div>
   </body>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-16227476-11', 'darklogic.ru');
+  ga('send', 'pageview');
+  </script>
 </html>
 

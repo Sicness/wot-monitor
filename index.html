@@ -1,101 +1,93 @@
-
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="World of Tanks Servers Monitor">
+    <meta name="author" content="Anton Balashov">
     <style>
       #map_canvas {
         width: 100%;
         height: 700px;
       }
     </style>
+    <title>WoT-Monitor</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script>
-function initialize() {
-  var mapOptions = {
-    zoom: 10,
-    center: new google.maps.LatLng(-33.9, 151.2)
-  }
-  var map = new google.maps.Map(document.getElementById('map_canvas'),
-                                mapOptions);
-
-  setMarkers(map, markers);
-
-var markers = [
-[1, 55.7785, 37.7195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=119&text=1']
-[2, 55.7605, 37.6195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
-[2, 55.7495, 37.6205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
-[2, 55.7705, 37.8715, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
-[2, 55.7505, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
-[2, 55.9205, 37.7175, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=118&text=2']
-[3, 55.7415, 37.6475, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=117&text=3']
-[4, 55.7495, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=116&text=4']
-[4, 55.7605, 37.7015, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=116&text=4']
-[5, 55.7405, 37.6215, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=115&text=5']
-[5, 55.8815, 37.4205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=115&text=5']
-[6, 56.1285, 38.1385, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=114&text=6']
-[7, 55.7415, 37.6705, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
-[7, 55.9995, 37.4315, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
-[7, 55.7105, 38.9515, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
-[7, 56.1395, 40.4115, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=113&text=7']
-[8, 54.1805, 37.6315, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=112&text=8']
-[9, 55.8505, 37.4815, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=111&text=9']
-[9, 59.9085, 30.3115, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=111&text=9']
-[10, 59.9285, 30.2995, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
-[10, 59.9605, 30.4095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
-[10, 59.9285, 30.4175, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=110&text=10']
-[12, 52.5995, 39.5915, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=108&text=12']
-[12, 60.0605, 30.3085, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=108&text=12']
-[13, 59.7415, 30.5575, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
-[13, 59.8485, 30.3395, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
-[13, 57.7915, 38.4485, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=107&text=13']
-[14, 59.9485, 30.4705, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
-[14, 59.9595, 30.4875, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
-[14, 59.9395, 30.3105, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=106&text=14']
-[15, 60.0505, 30.4495, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=105&text=15']
-[15, 59.9415, 30.3075, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=105&text=15']
-[19, 56.3385, 30.5005, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=101&text=19']
-[20, 53.2315, 50.1815, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=100&text=20']
-[28, 54.7405, 55.9585, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=92&text=28']
-[28, 48.7095, 44.5195, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=92&text=28']
-[34, 54.7315, 20.5095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=86&text=34']
-[34, 53.2205, 50.2095, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=86&text=34']
-[36, 56.8495, 60.6205, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=84&text=36']
-[42, 54.9685, 73.3905, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=78&text=42']
-[48, 57.1815, 65.5595, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=72&text=48']
-[63, 53.2215, 50.2615, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=57&text=63']
-[64, 55.0905, 82.9395, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=56&text=64']
-[65, 52.2285, 104.2975, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=55&text=65']
-[66, 56.5005, 84.9515, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=54&text=66']
-[77, 54.4115, 86.2985, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=43&text=77']
-[133, 46.9375, 142.7285, 'https://atlas.ripe.net/markers/cartography/img/templates/probe-default.png?hue=0&text=133']
-];
-function setMarkers(map, locations) {
-  var image = {
-    size: new google.maps.Size(20, 32),
-    origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(0, 32)
-  };
-  var shape = {
-      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-      type: 'poly'
-  };
-  for (var i = 0; i < markers.length; i++) {
-    var myLatLng = new google.maps.LatLng(markers[1], markers[2]);
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        icon: markers[3],
-        shape: shape,
-        title: beach[0],
-    });
-    marker.setMap(map);
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    <script src="/js/%SERVER%.js"> </script>
+    <script src="/js/google_analytics.js"> </script>
   </head>
+
   <body>
-    <div id="map_canvas"></div>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+            <a class="navbar-brand" href="#">WoT-Monitor</a>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/RU1.html">RU1</a></li>
+              <li><a href="/RU2.html">RU2</a></li>
+              <li><a href="/RU3.html">RU3</a></li>
+              <li><a href="/RU4.html">RU4</a></li>
+              <li><a href="/RU5.html">RU5</a></li>
+              <li><a href="/RU6.html">RU6</a></li>
+              <li><a href="/RU7.html">RU7</a></li>
+              <li><a target="_black" href="https://github.com/Sicness/wot-monitor">Github</a></li>
+            </ul>
+      </div>
+    </nav>
+
+    <div class="container"><br><br>
+      <div class="page-header"> <h1>WoT-Monitor</h1> </div>
+      <p class="lead">WoT-Monitor - Сервис мониторинга пинга с разных точек России</p>
+
+      <a id="Description"></a><div class="page-header"><h2>Зачем это?</h2></div>
+<div class="row">
+      <div class="col-lg-10">
+        <p>Цель проста: хотелось быстро и удобно узнать у одого ли у меня такие баги со связью до сервера или нет.
+           Сервис был сделан за один день на коленке, но позволяет быстро узнать как дела с каналами связи с разных точек Земли
+           до конкретных серверов World of Tanks</p>
+
+           <p><h3>Как это рабоает?</h3><br></p>
+        <p>Опрос серверов происходит при помощи сети <a href=atlas.ripe.net target="_black">atlas.ripe.net</a>, позволяющей мониторить состояние
+           сетевых ресурсов с разных точек Земли, а точнее от устройств других добровольцев. Подробнее можно ознакомится на <a href=http://habrahabr.ru/post/159701/>хабре</a></p>
+        <p>Хостится проект на домашней Raspberry Pi (картинка справа) и представляет из себя генерацию по cron каждые 15 минут новых статичных html.</p>
+       </div>
+       <div class="col-lg-2"><center><a href=http://geeknutz.com/wp-content/uploads/2013/12/raspberry_pi.jpg>
+          <img class="img-thumbnail" hint="Raspberry Pi" src=http://geeknutz.com/wp-content/uploads/2013/12/raspberry_pi.jpg></a>
+          <img class="img-thumbnail" hint="RIPE Atlas Probe V3" src=http://probev3.atlas.ripe.net/v3.jpg>
+          </center></p>
+        </div>
+        <p><h3>Как можно помочь?</h3></p>
+        <p>Если вы считаете что проект полезен и должен жить, то Вы можете поддержать его:</p>
+        <ul>
+          <li>Можно сказать спасибо золотом на преимиум днень на мой аккаунт в World of Tanks :) </li>
+          <li>Вы можете приютить проект на более стабильном хостиге чем домашний Raspberry Pi</li>
+          <li>Если Вы являетесь учатником сети atlas.ripe.net, то вместе мы можем увеличить количесто мест, от куда пигуются сервера WoT</li>
+          <li>Проект является open source и принимает pull requests на <a href=https://github.com/Sicness/wot-monitor>GitHub</a></li>
+          <li>Приветствуются отзывы и предложения</li>
+        </ul>
+        <p><h3>А кто здесь вообще?</h3></p>
+        <p>Мои контакты:</p>
+        <ul>
+          <li>EMail: sicness@darklogic.ru (он же аккаунт в WoT)</li>
+          <li>Профиль на WoT: <a href=http://worldoftanks.ru/community/accounts/2502545-CTOLbHuK/>CTOLbHuK</a></li>
+        </ul>
+        <hr>
+        <p><i>Author: Anton Balashov <sicness@darklogic.ru><br>
+          Licensed under GNU GPLv3</i></p>
+    </div>
   </body>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-16227476-11', 'darklogic.ru');
+  ga('send', 'pageview');
+  </script>
 </html>
+

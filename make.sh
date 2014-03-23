@@ -21,18 +21,20 @@ function foo
 
 #Google Analytics
 cp $BASE_DIR/google_analytics.js $js_dir/
+cp $BASE_DIR/index.html $www_dir/
 
-foo https://atlas.ripe.net/api/internal/measurement-last/1595135/ RU1.js
+
+for i in {1..7};
+do
+	sed "s/%SERVER%/RU$i/g" $BASE_DIR/ru.html > $www_dir/RU$i.html
+done
+
+foo https://atlas.ripe.net/api/internal/measurement-last/1595158/ RU1.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595133/ RU2.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595137/ RU3.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595138/ RU4.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595134/ RU5.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595139/ RU6.js
 foo https://atlas.ripe.net/api/internal/measurement-last/1595140/ RU7.js
-
-for i in {1..7};
-do
-	sed "s/%SERVER%/RU$i/g" $BASE_DIR/ru.html > $www_dir/RU$i.html
-done
 
 echo "Done"
